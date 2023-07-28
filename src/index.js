@@ -1,5 +1,6 @@
 import './styles.css';
+import {Guitar} from "./Guitar";
 
-const paragraph = document.createElement('p');
-paragraph.innerText = 'Hello!';
-document.body.append(paragraph);
+const testGuitar = new Guitar();
+console.log(testGuitar.isFaulty);
+
