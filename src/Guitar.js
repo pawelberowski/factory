@@ -1,4 +1,4 @@
-import {determineFaultiness} from "./determineFaultiness";
+import { determineFaultiness } from './determineFaultiness';
 
 export class Guitar {
   constructor(neck, strings, body) {
@@ -10,6 +10,15 @@ export class Guitar {
   }
 
   tune() {
-    return this.isTuned = true;
+    return (this.isTuned = true);
+  }
+
+  isPlayable() {
+    if (this.isTuned && !this.isFaulty) {
+      console.log('guitar is playing just fine!');
+      return true;
+    }
+    console.log('The guitar is not playable!');
+    return false;
   }
 }

@@ -1,3 +1,1 @@
-class Body {
-
-}
+class Body {}
