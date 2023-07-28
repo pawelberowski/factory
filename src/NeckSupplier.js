@@ -1,8 +1,16 @@
+import { getRandomInteger } from './getRandomInteger';
+import { Neck } from './Neck';
+
 export class NeckSupplier {
-  constructor() {
+  constructor(frequencyInSeconds, lastSupplyTimestamp) {
     this.frequencyInSeconds = frequencyInSeconds;
     this.lastSupplyTimestamp = lastSupplyTimestamp;
   }
 
-  delivery() {}
+  delivery() {
+    if (this.lastSupplyTimestamp < this.frequencyInSeconds) {
+      return null;
+    }
+    return Array(getRandomInteger(3, 6)).fill(new Neck());
+  }
 }
