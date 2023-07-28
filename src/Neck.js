@@ -1,1 +1,1 @@
-class Neck {}
+export class Neck {}

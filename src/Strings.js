@@ -1,1 +1,1 @@
-class Strings {}
+export class Strings {}

@@ -1,1 +1,1 @@
-class Body {}
+export class Body {}
