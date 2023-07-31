@@ -4,7 +4,7 @@ import { Strings } from './Strings';
 export class StringsSupplier {
   constructor(frequencyInSeconds) {
     this.frequencyInSeconds = frequencyInSeconds;
-    this.lastDeliveryDateTime = 0;
+    this.lastDeliveryDateTime = 4;
   }
 
   delivery() {

@@ -4,7 +4,7 @@ import { Neck } from './Neck';
 export class NeckSupplier {
   constructor(frequencyInSeconds) {
     this.frequencyInSeconds = frequencyInSeconds;
-    this.lastDeliveryDateTime = 0;
+    this.lastDeliveryDateTime = 4;
   }
 
   delivery() {
