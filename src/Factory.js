@@ -18,11 +18,11 @@ export class Factory {
   }
 
   runProductionLine() {
-    this.neckSupplier.delivery().forEach((neck) => {
+    this.neckSupplier.delivery()?.forEach((neck) => {
       this.necksArray.push(neck);
     });
     console.log(this.necksArray);
-    this.stringsSupplier.delivery().forEach((strings) => {
+    this.stringsSupplier.delivery()?.forEach((strings) => {
       this.stringsArray.push(strings);
     });
     console.log(this.stringsArray);
