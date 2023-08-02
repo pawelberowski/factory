@@ -31,10 +31,10 @@ export class Factory {
     }, 5000);
   }
 
-  runProductionLine() {
+  goThroughProductionCycle() {
     if (!this.stringsArray.length || !this.necksArray.length) {
       console.log('Not enough supplies');
-      return;
+      return this.stopProductionLine();
     }
     const guitar = new Guitar(
       this.necksArray.pop(),
@@ -44,6 +44,18 @@ export class Factory {
     guitar.tune();
     if (guitar.isPlayable()) {
       this.storage.storeInstrument(guitar);
+    }
+  }
+
+  runProductionLine() {
+    this.productionIntervalId = setInterval(() => {
+      this.goThroughProductionCycle();
+    }, 2000);
+  }
+
+  stopProductionLine() {
+    if (this.productionIntervalId) {
+      clearInterval(this.productionIntervalId);
     }
   }
 }
