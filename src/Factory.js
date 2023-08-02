@@ -11,21 +11,31 @@ export class Factory {
     this.storage = new Storage();
     this.necksArray = [];
     this.stringsArray = [];
+    this.initiateDeliveries();
   }
 
   produceBody() {
     return new Body();
   }
 
+  initiateDeliveries() {
+    setInterval(() => {
+      this.neckSupplier.delivery()?.forEach((neck) => {
+        this.necksArray.push(neck);
+      });
+      console.log(this.necksArray);
+      this.stringsSupplier.delivery()?.forEach((strings) => {
+        this.stringsArray.push(strings);
+      });
+      console.log(this.stringsArray);
+    }, 5000);
+  }
+
   runProductionLine() {
-    this.neckSupplier.delivery()?.forEach((neck) => {
-      this.necksArray.push(neck);
-    });
-    console.log(this.necksArray);
-    this.stringsSupplier.delivery()?.forEach((strings) => {
-      this.stringsArray.push(strings);
-    });
-    console.log(this.stringsArray);
+    if (!this.stringsArray.length || !this.necksArray.length) {
+      console.log('Not enough supplies');
+      return;
+    }
     const guitar = new Guitar(
       this.necksArray.pop(),
       this.stringsArray.pop(),
