@@ -9,7 +9,7 @@ export class Guitar {
     this.strings = strings;
     this.body = body;
     this.isTuned = false;
-    this.isFaulty = determineFaultiness(10);
+    this.isFaulty = determineFaultiness(70);
   }
 
   tune() {
