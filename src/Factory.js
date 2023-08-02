@@ -33,8 +33,12 @@ export class Factory {
 
   goThroughProductionCycle() {
     if (!this.stringsArray.length || !this.necksArray.length) {
-      console.log('Not enough supplies');
-      return this.stopProductionLine();
+      console.log('Not enough supplies - waiting for delivery');
+      this.stopProductionLine();
+      return this.waitForSupplies().then(() => {
+        console.log('Rerunning production');
+        this.runProductionLine();
+      });
     }
     const guitar = new Guitar(
       this.necksArray.pop(),
@@ -45,6 +49,18 @@ export class Factory {
     if (guitar.isPlayable()) {
       this.storage.storeInstrument(guitar);
     }
+  }
+
+  waitForSupplies() {
+    return new Promise((resolve) => {
+      const suppliesIntervalId = setInterval(() => {
+        console.log('Checking for supplies');
+        if (this.stringsArray.length && this.necksArray.length) {
+          resolve();
+          clearInterval(suppliesIntervalId);
+        }
+      }, 500);
+    });
   }
 
   runProductionLine() {
